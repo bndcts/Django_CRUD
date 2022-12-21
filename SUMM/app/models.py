@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class user(models.Model):
+class User(models.Model):
     Id = models.IntegerField(primary_key=True)
     Name = models.CharField(max_length=200)
     QuotaLimit = models.IntegerField()
@@ -10,17 +10,17 @@ class user(models.Model):
     def __str__(self):
         return self.Name
     
-    def get_absolute_url(self):
-        return reverse('user_edit', kwargs={'pk': self.Id})
+    #def get_absolute_url(self):
+     #   return reverse('user_edit', kwargs={'pk': self.Id})
 
-class translation(models.Model):
+class Translation(models.Model):
     Id = models.IntegerField(primary_key=True)
     InputText = models.CharField(max_length=200)
     OutputText = models.CharField(max_length=200)
-    FromUserId = models.ForeignKey(user, null=True, on_delete=models.SET_NULL)
+    FromUserId = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return self.Name
     
-    def get_absolute_url(self):
-        return reverse('translation_edit', kwargs={'pk': self.Id})
+    #def get_absolute_url(self):
+     #   return reverse('translation_edit', kwargs={'pk': self.Id})
