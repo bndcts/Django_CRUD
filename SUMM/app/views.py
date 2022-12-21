@@ -17,5 +17,15 @@ class UserView(DetailView):
 
 class UserCreate(CreateView):
     model = User
-    fields = ["Id", "Name", "QuotaSpend", "QuotaLimit"]
+    fields = ["Id", "Name", "QuotaSpent", "QuotaLimit"]
+    success_url = reverse_lazy("user_list")
+
+class UserUpdate(UpdateView):
+    model = User
+    fields = ['Id', 'Name', 'QuotaSpent', 'QuotaLimit']
+    success_url = reverse_lazy("user_list")
+
+class UserDelete(DeleteView):
+    model = User
+    fields = ['Id', 'Name', 'QuotaSpent', 'QuotaLimit']
     success_url = reverse_lazy("user_list")
