@@ -33,7 +33,7 @@ def add_user(request):
     
     if user.is_valid():
         user.save()
-        return Response(user.data)
+        return Response(user.data, status=status.HTTP_201_CREATED)
     else:
         return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
 
@@ -50,7 +50,7 @@ def view_users(request):
     # if there is something in Users else raise error
     if Users:
         data = UserSerializer(Users, many=True)
-        return Response(data.data)
+        return Response(data.data, status=status.HTTP_204_NO_CONTENT)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -66,12 +66,11 @@ def update_users(request, pk):
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
-
 @api_view(['DELETE'])
 def delete_users(request, pk):
     user = get_object_or_404(User, pk=pk)
     user.delete()
-    return Response(status=status.HTTP_202_ACCEPTED)
+    return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['POST'])
 def add_translation(request):
@@ -81,7 +80,7 @@ def add_translation(request):
     
     if translation.is_valid():
         translation.save()
-        return Response(translation.data)
+        return Response(translation.data, status=status.HTTP_201_CREATED)
     else:
         return Response(status=status.HTTP_406_NOT_ACCEPTABLE)
 
@@ -110,7 +109,7 @@ def update_translations(request, pk):
   
     if data.is_valid():
         data.save()
-        return Response(data.data)
+        return Response(data.data, status=status.HTTP_204_NO_CONTENT)
     else:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
@@ -119,4 +118,4 @@ def update_translations(request, pk):
 def delete_translations(request, pk):
     translation = get_object_or_404(Translation, pk=pk)
     translation.delete()
-    return Response(status=status.HTTP_202_ACCEPTED)
+    return Response(status=status.HTTP_204_NO_CONTENT)
