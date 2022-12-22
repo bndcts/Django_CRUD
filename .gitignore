@@ -3,6 +3,8 @@
 *.pot
 *.pyc
 __pycache__
+SUMM\SUMM\__pycache__
+SUMM\app\__pycache__
 beautifulDatabase.sqlite3
 media
 
