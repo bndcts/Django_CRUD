@@ -8,7 +8,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['Id', 'Name', 'QuotaLimit', 'QuotaSpent']
 
 class TranslationSerializer(serializers.ModelSerializer):
-    #FromUserId = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Translation
         fields = ('Id', 'InputText', 'OutputText', 'FromUserId')
