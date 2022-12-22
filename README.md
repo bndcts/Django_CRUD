@@ -18,3 +18,9 @@ Linux:
 Install all packages:
 
 `$ pip install -r requirements.txt`
+
+Create Models in Database:
+
+`$ python manage.py makemigrations`
+
+`$ python manage.py migrate`
